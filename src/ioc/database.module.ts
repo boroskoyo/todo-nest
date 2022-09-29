@@ -12,12 +12,8 @@ import { BaseModelSubscriber } from './base-model.subscriber';
       imports: [ConfigModule, BaseModelSubscriber],
       useFactory: (configService: ConfigService) => {
         return {
-          type: 'postgres',
-          host: configService.get('DB_SERVER'),
-          port: configService.get('DB_PORT'),
-          username: configService.get('DB_USER'),
-          password: configService.get('DB_PASSWORD'),
-          database: configService.get('DB_DATABASE'),
+          type: "sqlite",
+          database: "nestapp.db",
           entities: [__dirname + '/../**/*.entity{.ts,.js}'],
           synchronize: false,
           migrationsTableName: 'migration',
